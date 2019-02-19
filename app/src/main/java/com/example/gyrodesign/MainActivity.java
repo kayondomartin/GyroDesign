@@ -456,12 +456,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         public void run() {
             long time = System.currentTimeMillis();
             double angle = gyroOrientation[1]*180/Math.PI;
-            double hinge = gyroOrientation[0];
-            if(hinge>0){
+            double hinge = gyroOrientation[2];
+            /*if(hinge>0){
                 angle = -angle;
             }else{
                 angle = 180.0 + angle;
             }
+            */
 
 
             if(initialTime < 0){
@@ -471,7 +472,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 gyroList.add(new Point((time-initialTime)/1000.0,angle));
             }
 
-            Log.e(MainActivity.class.getSimpleName(),"["+(time-initialTime)/1000.0+","+angle+"]");
+            Log.e(MainActivity.class.getSimpleName(),"["+(time-initialTime)/1000.0+","+hinge+"]");
         }
     };
 }
